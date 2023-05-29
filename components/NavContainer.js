@@ -15,7 +15,7 @@ const NavContainer = () => {
   }, [])
   return (
     <NavigationContainer>
-      {token !== null ? <WelcomeStack /> : <BottomStack />}
+      {token === null ? <WelcomeStack /> : <BottomStack />}
       {/* !== >>> === 
           with acc  ------  !==
           without acc ----- ===

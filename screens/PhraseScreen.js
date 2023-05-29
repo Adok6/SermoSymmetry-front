@@ -9,6 +9,7 @@ import { API_URL } from '../http';
 const PhraseScreen = ({route}) => {
   const { id } = route.params;
   const [data, setData] = useState([]);
+  const [sound, setSound] = useState();
 
 
   // const categ = useCallback(async () => {
@@ -29,44 +30,47 @@ const PhraseScreen = ({route}) => {
     try {
       const response = await axios.get(API_URL + `/phrases/phraseBank/${id}`);
       setData(response.data);
+      // console.log(response.data)
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   }, [id]);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    fetchData()
+    return () => sound && sound.unloadAsync();
+  }, [fetchData, sound]);
 
-  const handleSoundPlayback = async (soundLink) => {
-    if (soundLink) {
-      try {
-        const soundObject = new Audio.Sound();
-        await soundObject.loadAsync({ uri: soundLink });
-        await soundObject.playAsync();
-      } catch (error) {
-        console.error('Error playing sound:', error);
-      }
-    }
-  };
+  // const handleSoundPlayback = async (soundLink) => {
+  //   if (soundLink) {
+  //     try {
+  //       const soundObject = new Audio.Sound();
+  //       await soundObject.loadAsync({ uri: soundLink });
+  //       await soundObject.playAsync();
+  //     } catch (error) {
+  //       console.error('Error playing sound:', error);
+  //     }
+  //   }
+  // };
   
 
   
 
   // first version
 
-  // const handleSoundPlayback = async (soundLink) => {
-  //   if (soundLink) {
-  //     try {
-  //       const { sound } = await Audio.Sound.createAsync({ uri: soundLink });
-  //       await sound.setPositionAsync(0);
-  //       await sound.playAsync();
-  //       console.log(soundLink);
-  //     } catch (error) {
-  //       console.error('Error playing sound:', error);
-  //     }
-  //   }
-  // };
+  const handleSoundPlayback = async (soundLink) => {
+    if (soundLink) {
+      try {
+        const { sound } = await Audio.Sound.createAsync({ uri: soundLink });
+        setSound(sound);
+        await sound.setPositionAsync(0);
+        await sound.playAsync();
+        // console.log(soundLink);
+      } catch (error) {
+        console.error('Error playing sound:', error);
+      }
+    }
+  };
 
   return (
     <ScrollView style={styles.container}>

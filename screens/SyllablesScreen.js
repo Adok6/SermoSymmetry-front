@@ -21,17 +21,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    textAlign: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
+    color: '#333333',
   },
   row: {
+    textAlign: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 200,
     marginBottom: 8,
+    backgroundColor: '#fff',
+    borderRadius: 4,
+    padding: 8,
   },
   syllable: {
     fontSize: 16,
+    color: '#666666',
   },
 });
 

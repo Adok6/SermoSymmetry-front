@@ -32,7 +32,6 @@ const ExercisesSubScreen = () => {
         {data && data.map((value) => {
             return (
               <TouchableOpacity onPress={() => {navigation.navigate("ActivityScreen", {id: value.id, text: value.text}) }} key={value.id} style={styles.exerciseBlock}>
-                {/* <Image source={{ uri: API_URL+ value.image.slice(21) }} style={styles.exerciseImage} /> */}
                 <Text style={styles.exerciseName}>{value.text}</Text>
               </TouchableOpacity>
             )

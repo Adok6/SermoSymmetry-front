@@ -29,7 +29,7 @@ const ActivityScreen = ({route}) => {
         {data && data.map((value) => {
           return (
             <View key={value.id} style={styles.exerciseBlock}>
-              <Image source={{ uri: API_URL+ value.image.slice(21) }} style={styles.exerciseImage} />
+              <Image source={{ uri: value.image }} style={styles.exerciseImage} />
               <Text style={styles.exerciseName}>{value.text}</Text>
             </View>
           )
