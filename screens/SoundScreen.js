@@ -98,7 +98,6 @@ const handleLetterPress = (letter) => {
   return (
     <View style={styles.container}>
     <Header/>
-    <Text style={styles.subtitle}></Text>
       <View style={styles.lettersContainer}>
         {jsonData.map((item, index) => (
           <TouchableOpacity
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     backgroundColor: '#e3e3e3',
   },
   subtitle: {
@@ -133,6 +132,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
   },
   letterButton: {
     backgroundColor: '#7F30FD',

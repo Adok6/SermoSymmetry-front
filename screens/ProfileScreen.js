@@ -33,7 +33,7 @@ const categ = useCallback(async () => {
   axios.get(API_URL+'/users/me', config).then((response) => {
     if (response)
       setData(response.data)
-      console.log('name', data);
+      console.log('name', response.data);
   });
 
 });
